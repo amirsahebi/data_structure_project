@@ -1,0 +1,100 @@
+
+{% extends "theme.html" %}
+{% load static %}
+{% load widget_tweaks %}
+<!doctype html>
+<html lang="en">
+  <head>
+    {% block head %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'product_form/fonts/icomoon/style.css' %}">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'product_form/css/bootstrap.min.css' %}">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="{% static 'product_form/css/style.css' %}">
+
+    <title>Contact Form #4</title>
+    {% endblock head %}
+  </head>
+  {% block content %}
+  <body>
+  
+
+  <div class="content">
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5 mr-auto">
+          <h3 class="mb-3">Let's work together</h3>
+          <h1>Edit</h1>
+          <h1>YOUR</h1>
+          <h1>PRODUCT</h1>
+          
+        </div>
+
+        <div class="col-md-6">
+          <div class="box">
+            <h3 class="heading">Product Form</h3>
+            <form class="mb-5" method="post" action="{% url 'edit-post-form' slug=post.slug %}" enctype='multipart/form-data'>
+              <div class="row">
+                {% csrf_token %}
+                <div class="col-md-6 form-group">
+                  <label class="col-form-label" for="{{ form.name.id_for_label }}">{{ form.name.label }}</label> {% render_field form.name class+="form-control" placeholder='Product name' %}
+                </div>
+                <div class="col-md-6 form-group">
+                  <label class="col-form-label" for="{{ form.cost.id_for_label }}">{{ form.cost.label }}</label> {% render_field form.cost class+="form-control" placeholder='Product Cost' %}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <label class="col-form-label" for="{{ form.barcode.id_for_label }}">{{ form.barcode.label }}</label> {% render_field form.barcode class+="form-control" placeholder='Product Barcode' %}
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <label class="col-form-label" for="{{ form.caption.id_for_label }}">{{ form.caption.label }}</label> {% render_field form.caption class+="form-control" placeholder='Product Description' %}
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-12 form-group">
+                  <label class="col-form-label" for="{{ form.image.id_for_label }}">{{ form.image.label }}</label> {% render_field form.image class+="form-control" placeholder='Product Description' %}
+                </div>
+                
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <input type="submit" value="Submit Changes" class="btn btn-block btn-primary rounded-0 py-2 px-4">
+                  <span class="submitting"></span>
+                </div>
+              </div>
+            </form>
+
+            <div id="form-message-warning mt-4"></div> 
+            <div id="form-message-success">
+              Your message was sent, thank you!
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+    
+    
+
+    <script src="{% static 'product_form/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'product_form/js/popper.min.js' %}"></script>
+    <script src="{% static 'product_form/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'product_form/js/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'product_form/js/main.js' %}"></script>
+
+  </body>
+  {% endblock content %}
+</html>
